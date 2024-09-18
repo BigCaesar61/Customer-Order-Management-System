@@ -8,3 +8,44 @@ const inventory = [
     { name: 'Beans', price: 7, quantity: 75}
   ];
   //array for inventory items
+
+//Task 2: Create an Orders Array of Order Objects
+
+  const orders = [
+    {
+        customerName: 'Mike',
+        items: [
+            {name: 'Cold Brew', quantity: 2}
+        ],
+        status: 'Complete'
+    },
+
+    {
+        customerName: 'Valerie',
+        items: [
+            {name: 'Latte', quantity: 1},
+            {name: 'Beans', quantity: 1}
+        ],
+        status: 'Pending'
+    },
+    {
+        customerName: 'Tom',
+        items: [
+            {name: 'Espresso', quantity: 1},
+            {name: 'Latte', quantity: 1},
+            {name: 'Cold Brew', quantity: 1}
+        ],
+        status: 'Complete'
+
+    },
+    {
+        customerName: 'Tina',
+        items: [
+            {name: 'Latte', quantity: 1}
+        ],
+        status: 'Pending'
+
+
+    }
+
+  ];
