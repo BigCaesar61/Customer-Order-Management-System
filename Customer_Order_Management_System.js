@@ -24,6 +24,9 @@ const inventory = [
         if (!product) {
             console.log(`Error: Product ${item.name} does not exist in the inventory.`);
             outOfStock = true;
+        } else if (product.quantity < item.quantity) {
+          console.log(`Error: Not enough stock for ${item.name}. Only ${product.quantity} left.`);
+          outOfStock = true;
         }
     });
     if (outOfStock) return; 
@@ -79,19 +82,16 @@ function completeOrder(customerName) {
 
 };
 
-const totalCost = calculateOrderTotal(orders[0]);
-console.log(`Order placed for ${orders[0].customerName}. The total is: $${totalCost}`);
-
 //Task 6: Create a Function to Check Pending Orders
 
-function checkPendinOrders() {
+function checkPendingOrders() {
 console.log("Pending Orders:");
 
 orders.forEach(order => {
 if (order.status === "Pending") {
   console.log(`Customer: ${order.customerName}`);
   console.log("Order Details:");
-  order.items.forEach(items => {
+  order.items.forEach(item => {
     console.log(`- ${item.name}, Quantity: ${item.quantity}`);
   });
   console.log(`Status: ${order.status}`);
@@ -110,3 +110,8 @@ placeOrder('Emerson', [
   {name: 'Espresso', quantity: 1},
   {name: 'Beans', quantity: 2}
 ]);
+
+const totalCost = calculateOrderTotal(orders[0]);
+console.log(`Order placed for ${orders[0].customerName}. The total is: $${totalCost}`);
+//Tests and displays two orders
+checkPendingOrders();
