@@ -11,44 +11,7 @@ const inventory = [
 
 //Task 2: Create an Orders Array of Order Objects
 
-  const orders = [
-    {
-        customerName: 'Mike',
-        items: [
-            {name: 'Cold Brew', quantity: 2}
-        ],
-        status: 'Complete'
-    },
-
-    {
-        customerName: 'Valerie',
-        items: [
-            {name: 'Latte', quantity: 1},
-            {name: 'Beans', quantity: 1}
-        ],
-        status: 'Pending'
-    },
-    {
-        customerName: 'Tom',
-        items: [
-            {name: 'Espresso', quantity: 1},
-            {name: 'Latte', quantity: 1},
-            {name: 'Cold Brew', quantity: 1}
-        ],
-        status: 'Complete'
-
-    },
-    {
-        customerName: 'Tina',
-        items: [
-            {name: 'Latte', quantity: 1}
-        ],
-        status: 'Pending'
-
-
-    }
-
-  ];
+  const orders = [];
 
 
   //Task 3: Create a Function to Place an Order
@@ -72,5 +35,14 @@ const inventory = [
     });
     //this function processes an order by subtracting how much is ordered by the total amount
     //of items
+
+  };
+
+  //Task 4: Create a Function to Calculate Total for an Order
+
+  function calculateOrderTotal(customerName) {
+    
+
+
 
   };
