@@ -18,6 +18,7 @@ const inventory = [
 
   function placeOrder(customerName, orderedItems) {
     let outOfStock = false;
+
     orderedItems.forEach(item => {
         const product = inventory.find(product => product.name === item.name);
         if (!product) {
@@ -35,15 +36,23 @@ const inventory = [
     });
     //this function processes an order by subtracting how much is ordered by the total amount
     //of items
+    const newOrder = {
+      customerName: customerName,
+      items: orderedItems,
+      status: 'Pending'
+    };
+    orders.push(newOrder); //pushes prder to order array
+    console.log(`Order placed for ${customerName}.`); //confirms order has been placed
+
 
   };
 
   //Task 4: Create a Function to Calculate Total for an Order
 
-  function calculateOrderTotal(customerName) {
+  function calculateOrderTotal(order) {
     let total = 0;
 
-    orders.items.forEach(item => {
+    order.items.forEach(item => {
         const product = inventory.find(product => product.name === item.name);
         if (product) {
             total += item.quantity * product.price; //equation to calculate order total
@@ -57,30 +66,7 @@ const inventory = [
 
   };
 
-  const newOrder = {
-    customerName: customerName,
-    items: orderedItems,
-    status: 'Pending',
-    totalPrice: totalCost,
-  };
-  orders.push(newOrder); //pushes the new order into the empty array "orders"
-
-  console.log(`Order placed for ${customerName}. The Total is: $${totalCost}`); 
-  //gives us confirmation that the order was made and what the total of the order is
-
-  //test orders:
-  placeOrder('Valerie', [
-    {name: 'Latte', quantity: 1},
-    {name: 'Cold Brew', quantity: 1}
-  ]);
-
-  placeOrder('Emerson', [
-    {name: 'Espresso', quantity: 1},
-    {name: 'Beams', quantity: 2}
-  ]);
-
 //Task 5: Create a Function to Mark an Order as Completed
-
 function completeOrder(customerName) {
     const order =  orders.find(order => order.customerName === customerName);
 
@@ -93,6 +79,8 @@ function completeOrder(customerName) {
 
 };
 
+const totalCost = calculateOrderTotal(orders[0]);
+console.log(`Order placed for ${orders[0].customerName}. The total is: $${totalCost}`);
 
 //Task 6: Create a Function to Check Pending Orders
 
@@ -100,7 +88,7 @@ function checkPendinOrders() {
 console.log("Pending Orders:");
 
 orders.forEach(order => {
-if (order.staus === "Pending") {
+if (order.status === "Pending") {
   console.log(`Customer: ${order.customerName}`);
   console.log("Order Details:");
   order.items.forEach(items => {
@@ -111,3 +99,14 @@ if (order.staus === "Pending") {
 });
 
 };
+
+//test orders:
+placeOrder('Valerie', [
+  {name: 'Latte', quantity: 1},
+  {name: 'Cold Brew', quantity: 1}
+]);
+
+placeOrder('Emerson', [
+  {name: 'Espresso', quantity: 1},
+  {name: 'Beans', quantity: 2}
+]);
