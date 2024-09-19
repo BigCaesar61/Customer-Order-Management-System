@@ -11,7 +11,7 @@ const inventory = [
 
 //Task 2: Create an Orders Array of Order Objects
 
-  const orders = [];
+  const orders = []; //empty array to hold orders
 
 
   //Task 3: Create a Function to Place an Order
@@ -41,8 +41,31 @@ const inventory = [
   //Task 4: Create a Function to Calculate Total for an Order
 
   function calculateOrderTotal(customerName) {
-    
+    let total = 0;
 
+    orders.items.forEach(item => {
+        const product = inventory.find(product => product.name === item.name);
+        if (product) {
+            total += item.quantity * product.price; //equation to calculate order total
+        } else {
+            console.log(`Error: Product ${item.name} not found in inventory.`); //error code for item not found
+        }
 
+    });
+
+    return total;
 
   };
+
+  const newOrder = {
+    customerName: customerName,
+    items: orderedItems,
+    status: 'Pending',
+    totalPrice: totalCost,
+  };
+  orders.push(newOrder); //pushes the new order into the empty array "orders"
+
+  console.log(`Order placed for ${customerName}. The Total is: $${totalCost}`); 
+  //gives us confirmation that the order was made and what the total of the order is
+  
+
