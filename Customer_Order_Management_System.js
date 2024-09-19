@@ -67,5 +67,28 @@ const inventory = [
 
   console.log(`Order placed for ${customerName}. The Total is: $${totalCost}`); 
   //gives us confirmation that the order was made and what the total of the order is
-  
 
+  //test orders:
+  placeOrder('Valerie', [
+    {name: 'Latte', quantity: 1},
+    {name: 'Cold Brew', quantity: 1}
+  ]);
+
+  placeOrder('Emerson', [
+    {name: 'Espresso', quantity: 1},
+    {name: 'Beams', quantity: 2}
+  ]);
+
+//Task 5: Create a Function to Mark an Order as Completed
+
+function completeOrder(customerName) {
+    const order =  orders.find(order => order.customerName === customerName);
+
+    if (order) {
+        order.status = 'Completed';
+        console.log(`Order for ${customerName} has been completed.`);
+    } else {
+        console.log(`Error: No order found for ${customerName}.`);
+    }
+
+};
